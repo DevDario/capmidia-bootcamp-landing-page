@@ -1,0 +1,13 @@
+{
+  "name": "capmidia-bootcamp-page",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server . -p 3001 -o -y"
+  },
+  "keywords": ["landing page","bootcamp page","frontend"],
+  "author": "Dário Silva",
+  "license": "MIT",
+  "packageManager": "pnpm@10.11.0"
+}
