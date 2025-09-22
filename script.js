@@ -1,3 +1,5 @@
+const form = document.getElementById("form")
+
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   anchor.addEventListener("click", function (e) {
     e.preventDefault();
@@ -24,6 +26,7 @@ window.addEventListener("scroll", function () {
 });
 
 function setupSlider(sliderId) {
+
   const container = document.getElementById(sliderId);
   if (!container) return;
 
@@ -49,3 +52,37 @@ function setupSlider(sliderId) {
 }
 
 setupSlider("work-slider");
+
+
+async function handleSubmit(event) {
+  event.preventDefault();
+
+  const form = event.target;
+  const whatsappLink = 'https://chat.whatsapp.com/BDokgPqm1GdLGYBL4SFbPC?mode=ems_wa_t';
+
+  const formData = new FormData(form);
+  const formspreeUrl = form.getAttribute('data-formspree');
+
+  try {
+    const response = await fetch(formspreeUrl, {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
+      }
+    });
+
+    if (response.ok) {
+      console.log('Data sent to Formspree.');
+      window.location.href = whatsappLink;
+    } else {
+      console.error('Error sending data to Formspree.');
+      alert('Houve um erro na submissão. Por favor, tente novamente.');
+    }
+  } catch (error) {
+    console.error('Network error:', error);
+    alert('Houve um problema de conexão. Por favor, verifique sua internet e tente novamente.');
+  }
+}
+
+form.addEventListener('submit', handleSubmit);
