@@ -1,7 +1,27 @@
 {
-  "name": "capmidia bootcamp",
-  "short_name": "capmidia",
+  "name": "Bootcamp de Edição de Vídeo",
+  "short_name": "Bootcamp",
+  "description": "Bootcamp de um dia para aprender Adobe Premiere Pro e se tornar um editor de vídeo profissional.",
+  "start_url": "./",
+  "display": "standalone",
+  "theme_color": "#C850F2",
+  "background_color": "#202020",
   "icons": [
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
     {
       "src": "/android-chrome-192x192.png",
       "sizes": "192x192",
@@ -12,8 +32,5 @@
       "sizes": "512x512",
       "type": "image/png"
     }
-  ],
-  "theme_color": "#3b023b",
-  "background_color": "#3b023b",
-  "display": "standalone"
+  ]
 }
