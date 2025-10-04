@@ -1,4 +1,7 @@
 const form = document.getElementById("form")
+const video = document.getElementById("hero-video")
+const playBtn = document.getElementById("play-btn")
+
 
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   anchor.addEventListener("click", function (e) {
@@ -53,6 +56,24 @@ function setupSlider(sliderId) {
 
 setupSlider("work-slider");
 
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: "0px 0px -100px 0px",
+};
+
+const observer = new IntersectionObserver(function (entries) {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = "1";
+      entry.target.style.transform = "translateY(0)";
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll(".animate-on-scroll").forEach((el) => {
+  observer.observe(el);
+});
+
 
 async function handleSubmit(event) {
   event.preventDefault();
@@ -84,5 +105,24 @@ async function handleSubmit(event) {
     alert('Houve um problema de conexão. Por favor, verifique sua internet e tente novamente.');
   }
 }
+
+
+function controllVideo(state) {
+  if (state === "pause") {
+    video.pause();
+    playBtn.style.display = "inline";
+  } else if (state === "play") {
+    video.play();
+    playBtn.style.display = "none";
+  }
+}
+
+playBtn.addEventListener("click", () => controllVideo("play"));
+video.addEventListener("click", () => {
+  if (playBtn.style.display === "none") {
+    controllVideo("pause")
+  }
+})
+
 
 form.addEventListener('submit', handleSubmit);
